@@ -1,13 +1,110 @@
-<!DOCTYPE html>
+<!DOCTYPE Html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="theme.css">
+	<script src="script.js"></script>
 </head>
 <body>
-<header>
-    <h1>Web Visual Design Notes</h1>
-</header>
-<hr>
+	<nav>
+		<ul>
+      <li class="dropdown"><button onClick="toggleMenu(0)">menu1</button>
+				<div class="dropdown-content">
+					<a href="">link1</a>
+					<a href="">link2</a>
+					<a href="">link3</a>
+				</div>
+			</li>
+			<li class="dropdown"><button onClick="toggleMenu(1)">menu2</button>
+				<div class="dropdown-content">
+					<a href="">link4</a>
+					<a href="">link5</a>
+				</div>
+			</li>
+			<li class="dropdown"><button onClick="toggleMenu(2)">menu3</button>
+				<div class="dropdown-content">
+					<a href="">link6</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<aside></aside>
+	<main>
+		<header>
+      <img class="slides" src="https://www.pakutaso.com/shared/img/thumb/SH113AB067_0_TP_V.jpg" style="display:block;">
+      <img class="slides" src="https://www.pakutaso.com/shared/img/thumb/SHI0915023.JPG" style="display:none;">
+      <img class="slides" src="https://www.pakutaso.com/shared/img/thumb/suisyoudama5V7A1482_TP_V.jpg" style="display:none;">
+      <button class="slideButton left" onclick="slide(-1)">&#10094;</button>
+<button class="slideButton right" onclick="slide(+1)">&#10095;</button>
+    </header>
+		<article><div class="title">title</div><div class="context">context</div></article>
+		<figure>
+  		<figcaption>caption 1</figcaption>
+  		<img src="https://www.pakutaso.com/shared/img/thumb/SH113AB067_0_TP_V.jpg" alt="Fig. 1" onClick="modal('modal1')">
+      <div id="modal1" class="modal" onclick="this.style.display='none'">
+        <img src="https://www.pakutaso.com/shared/img/thumb/SH113AB067_0_TP_V.jpg">
+      </div>
+		</figure>
+		<figure>
+  		<figcaption>caption 2</figcaption>
+  		<img src="https://www.pakutaso.com/shared/img/thumb/SHI0915023.JPG" alt="Fig. 2" onClick="modal('modal2')">
+      <div id="modal2" class="modal" onclick="this.style.display='none'">
+        <img src="https://www.pakutaso.com/shared/img/thumb/SHI0915023.JPG">
+      </div>
+		</figure>
+		<figure>
+  		<figcaption>caption 3</figcaption>
+  		<img src="https://www.pakutaso.com/shared/img/thumb/suisyoudama5V7A1482_TP_V.jpg" alt="Fig. 3" onClick="modal('modal3')">
+      <div id="modal3" class="modal" onclick="this.style.display='none'">
+        <img src="https://www.pakutaso.com/shared/img/thumb/suisyoudama5V7A1482_TP_V.jpg">
+      </div>
+		</figure>
+    <div class="tabNav">
+      <button class="tabs tabActive" onclick="openTab(event,'Tab1')">Tab1</button>
+      <button class="tabs" onclick="openTab(event,'Tab2')">Tab2</button>
+      <button class="tabs" onclick="openTab(event,'Tab3')">Tab3</button>
+    </div>
+    <div id="Tab1" class="tabContent" style="display:flex">
+      <div>Content 1</div>
+    </div>
+    <div id="Tab2" class="tabContent" style="display:none">
+      <div>Content 2</div>
+    </div>
+    <div id="Tab3" class="tabContent" style="display:none">
+      <div>Content 3</div>
+    </div>
+  <table>
+    <tr>
+      <th>Name<input type="text"/></th>
+      <th>Color<select></select></th>
+      <th>Taste<select></select></th>
+    </tr>
+    <tr>
+      <td>apple</td><td>red</td><td>sweet</td>
+    </tr>
+    <tr>
+      <td>tangerine</td><td>orange</td><td>sour</td>
+    </tr>
+    <tr>
+      <td>pineapple</td><td>yellow</td><td>sour</td>
+    </tr>
+    <tr>
+      <td>strawberry</td><td>red</td><td>sweet</td>
+    </tr>
+    <tr>
+      <td>banana</td><td>yellow</td><td>sweet</td>
+    </tr>
+  </table>
+	</main>
+	<footer>footer
+    <ul>
+      <li class="popup">
+        <div class="popup-content">
+          <a href="">facebook</a><a href="">twitter</a>
+        </div>
+      <li>
+    </ul>
+    <button class="linkButton" id="popupButton" onClick="popup()">＋</button>
+  </footer>
 </body>
 </html>
