@@ -2,13 +2,14 @@ var myCharacter;
 
 function startGame() {
   myGameArea.start();
+	myGameArea.fadeIn();
   //line
   //line = new line(5, 300, 795, 300, "#AAAAAA", 5, "round");
   //grd = new linearGradient(60, 60, 140, 140, "Red", "White");
   //circle = new circle(100, 100, 40, 0, 2 * Math.PI, "#AA9999", grd);
   myCharacter = new character("up", myGameArea.canvas.width/2, myGameArea.canvas.height/2, 20, 0, 15);
 	item = new object("item", 100, 100, 20, 0, 15);
-	item1 = new object("item", 500, 200, 20, 0, 15);
+	star = new object("item", 500, 200, 20, 0, 15);
   //text = new text(10, 330, "Hint: ", "#555555", "16px courier");
 }
 
@@ -36,7 +37,11 @@ var myGameArea = {
   },    
   clearGraphic : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  }
+  },
+	fadeIn : function(){
+		ctx = myGameArea.context;
+		ctx.globalAlpha = 0;
+	}
 }
 
 function character(id, x, y, blur, offsetX, offsetY){
@@ -162,26 +167,25 @@ function text(x, y, text, color, font){
 }
 
 function updateGameArea() {
+	
 	myGameArea.frameNo = (myGameArea.frameNo + 1) % 100;
   myGameArea.clearGraphic();
+	
+	if(ctx.globalAlpha < 1){ ctx.globalAlpha += 0.01; }
   if (myGameArea.keys && myGameArea.keys[37]) {myCharacter.direction = "left";}
   if (myGameArea.keys && myGameArea.keys[39]) {myCharacter.direction = "right"; }
   if (myGameArea.keys && myGameArea.keys[38]) {myCharacter.direction = "up"; }
   if (myGameArea.keys && myGameArea.keys[40]) {myCharacter.direction = "down"; }
   myCharacter.newPos();
   myCharacter.update();
+	if(star){
+		star.update(Math.floor(myGameArea.frameNo / 50));
+	}
 	if(item){
 		if(myCharacter.touch(item)){
 			delete item;
 		} else {
 			item.update(Math.floor(myGameArea.frameNo / 50));
-		}
-	}
-	if(item1){
-		if(myCharacter.touch(item1)){
-			delete item1;
-		} else {
-			item1.update(Math.floor(myGameArea.frameNo / 50));
 		}
 	}
 }
